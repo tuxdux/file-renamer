@@ -1,0 +1,4 @@
+#! /bin/sh
+input1="$1"
+input2="$2"
+java FileRename $input1 $input2

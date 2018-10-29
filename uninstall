@@ -1,0 +1,7 @@
+#! /bin/sh
+echo Removing...
+cd ~/.local/bin
+rm 'FileRename.class'
+rm 'FileRename$1.class'
+rm 'renamer'
+echo Done!

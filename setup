@@ -1,0 +1,5 @@
+#! /bin/sh
+echo Copying...
+cp ./bin/* ~/.local/bin
+chmod +x ~/.local/bin/renamer
+echo Done!
