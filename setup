@@ -1,5 +1,10 @@
 #! /bin/sh
+echo Compiling
+javac ./src/FileRename.java
+mv ./src/*.class ./bin
 echo Copying...
 cp ./bin/* ~/.local/bin
 chmod +x ~/.local/bin/renamer
+echo Cleaning...
+rm ./bin/*.class
 echo Done!
