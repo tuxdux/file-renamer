@@ -63,6 +63,9 @@ Test
 Notice that there are no spaces.
 That is it. Your new files in the directory will be renamed automatically, as long as the program in running. To stop the program press `Ctrl+C`.
 
+## Usage in other OS
+Since the code is in java, this will obviously work in other OS as well. You will have to compile the java files and pass the options for different modes as arguments, either running from the command line or from an IDE (You should prefer the command line, since argument passing is easier that way). 
+
 ## Known bugs
 * Does not work well when moving files.
 * Does not rename all files when copying multiple files because the last access time is not same for all. So user should keep that in mind. If you need to copy multiple files, copy them one by one.
