@@ -1,7 +1,7 @@
 # file-renamer
 ### [![Link Shield](https://img.shields.io/badge/required-JDK%207-red.svg)](https://docs.oracle.com/javase/7/docs/api/java/nio/file/attribute/BasicFileAttributes.html)
 ```
-Note : This program is made only for Linux, and has only been tested on Linux.
+Note : This program has only been tested on Linux, but will most likely work on other operating systems.
 Required : JDK 7. You need the JDK for compiling the java files.
 ```
 A program for renaming files automatically in a directory. This program monitors a directory (whose path is provided by the user) and, on noticing a change in the number of files, it automatically renames the latest file to the desired string (which is also provided by the user) followed by a number, which is tracked.

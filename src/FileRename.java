@@ -17,8 +17,7 @@ import java.util.concurrent.*;
  * 1. This program is created for Linux.
  * 2. Requires Java 7, since it uses the nio library.
  * 3. The program does not change names of directories.
- * 4. The program does not change names of hidden files (since otherwise, it would
- *    remove the dot before the files and they would not be hidden anymore).
+ * 4. The program does not change names of hidden files.
  * 5. The program has three modes :
  *    - Normal mode (started as "renamer")
  *    	This mode starts numbering files with 1.
@@ -138,8 +137,6 @@ public class FileRename
 			scan = new Scanner(System.in);
 			System.out.println("Enter the prefix to be used:");
 			String pattern = scan.nextLine();
-			//Tell the user how to exit
-			System.out.println("----Press Ctrl+C to stop monitoring----");
 			
 			File directory = new File(path);
 
@@ -210,7 +207,7 @@ public class FileRename
 			//Now we have the latest file.
 			//If the file is not a directory and is not a hidden file,
 			//we rename it according to the provided pattern.
-			if(!latestFile.isDirectory() && !latestFile.getName().startsWith("."))
+			if(!latestFile.isDirectory() && !latestFile.isHidden())
 			{
 				//Get the initial size of the file
 				long size = getSize(latestFile);
@@ -252,20 +249,24 @@ public class FileRename
 				//If we have to continue renaming
 				if(toContinue)
 				{
-					File newFile = new File(directory.getPath()+File.separator+
-                                                        pattern+" "+files.length+extension);
+					File newFile = null;
 					if(pattern.equals(""))
 						newFile = new File(directory.getPath()+File.separator+
 								files.length+extension);
+					else
+						newFile = new File(directory.getPath()+File.separator+
+                                                        pattern+" "+files.length+extension);
 					latestFile.renameTo(newFile);
 				}
 				else
 				{
-					File newFile = new File(directory.getPath()+File.separator+
-							pattern+" "+nameNumber+extension);
+					File newFile = null;
 					if(pattern.equals(""))
 						newFile = new File(directory.getPath()+File.separator+
 								nameNumber+extension);
+					else
+						newFile = new File(directory.getPath()+File.separator+
+							pattern+" "+nameNumber+extension);
 					latestFile.renameTo(newFile);
 					//Increment the number in the name by one
 					nameNumber++;
@@ -283,7 +284,7 @@ public class FileRename
 		for(File file : files)
 		{
 			//If the length of file is 0 but the file is not a hidden file, delete it
-			if(getSize(file)==0 && !file.getName().startsWith("."))
+			if(getSize(file)==0 && !file.isHidden())
 			{
 				//If the 0 byte file was renamed (by mistake), adjust
 				//the next number for renaming

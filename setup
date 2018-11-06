@@ -1,5 +1,5 @@
 #! /bin/sh
-echo Compiling
+echo Compiling...
 javac ./src/FileRename.java
 mv ./src/*.class ./bin
 echo Copying...
