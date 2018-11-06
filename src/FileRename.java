@@ -172,6 +172,10 @@ public class FileRename
 	public void start(File directory, String pattern) throws IOException
 	{
 		File[] files = directory.listFiles();
+		if(files==null)
+		{
+			return;
+		}
 		//If there are new files in the directory
 		if(files.length > earlierCount)
 		{
