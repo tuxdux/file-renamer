@@ -23,6 +23,7 @@ If the pattern (more accurately "prefix") provided by the user is `Test`, the fi
 	The `%num%` is where the user provides a custom starting point. Then, the renaming begins from the the custom point. So, if the `%num%` provided by the user is 10, the first new file will be renamed as `%pattern% 10`.
 * To start monitoring the current directory open in terminal, use `"."`. For a subdirectory `Dir`, you can write like `./Dir`.
 * To refer to the home directory, use `"~"`. For a subdirectory `Dir`, you can write like `~/Dir`.
+* Do **NOT** copy another file while one file is being copied (or downloaded). This program only renames the latest file in a directory. If a file is copied (say `A`) while another file is still being copied (say `B`), the latest file will be `B` and it would get renamed. However, `A` will never be the latest file and it would never get renamed. So basically. just avoid mass copying or mass downloading.
 
 ## Installation
 This program is installed user-wise. So you don't need to run anything as `sudo`, which is better anyways.
