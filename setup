@@ -3,7 +3,9 @@ echo Compiling...
 javac ./src/FileRename.java
 mv ./src/*.class ./bin
 echo Copying...
-cp ./bin/* ~/.local/bin
+mkdir -p ~/.local/bin/__renamer__
+cp ./bin/*.class ~/.local/bin/__renamer__
+cp ./bin/renamer ~/.local/bin
 chmod +x ~/.local/bin/renamer
 echo Cleaning...
 rm ./bin/*.class

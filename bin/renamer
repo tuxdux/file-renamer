@@ -1,4 +1,4 @@
 #! /bin/sh
 input1="$1"
 input2="$2"
-java -cp ~/.local/bin FileRename $input1 $input2
+java -cp ~/.local/bin/__renamer__ FileRename $input1 $input2

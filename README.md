@@ -10,17 +10,17 @@ A program for renaming files automatically in a directory. This program monitors
 If the pattern (more accurately "prefix") provided by the user is `Test`, the first new file will be renamed as `Test 1`. Then, as long as the program continues to run in the background, every new file in that directory will be renamed by numbers. So the second new file will be `Test 2` and the third will be `Test 3` and so on.
 
 ## Instructions
-* This program has been created for Linux.
+* This program has been tested only on Linux.
 * The program does not change names of directories.
-* The program does not change names of hidden files (since otherwise, it would remove the dot before the files and they would not be hidden anymore).
+* The program does not change names of hidden files.
 * The program has three modes :
   * Normal mode (started as `renamer`)
 	This mode starts numbering files with 1.
   * Continue mode (started as `renamer -c` or `renamer --continue`)
 	This mode starts numbering the files with the number of files already present in the directory. So if there are 10 files already in the directory, the new file will be renamed as `%pattern% 11`.
+	<br>**NOTE** : This continue mode also counts subdirectories. So if there are 4 files and 1 subdirectory, the new file will be renamed %pattern% 6 (since there are technically 5 files already present).</br>
   * Number mode (started as `renamer -n %num%` or `renamer --number %num%`)
 	The `%num%` is where the user provides a custom starting point. Then, the renaming begins from the the custom point. So, if the `%num%` provided by the user is 10, the first new file will be renamed as `%pattern% 10`.
-* Removes any empty files (Of length 0 bytes) it notices. Might be a **bug** for some users.
 * To start monitoring the current directory open in terminal, use `"."`. For a subdirectory `Dir`, you can write like `./Dir`.
 * To refer to the home directory, use `"~"`. For a subdirectory `Dir`, you can write like `~/Dir`.
 
@@ -37,7 +37,7 @@ chmod +x uninstall
 ./uninstall
 ```
 ## Usage
-Open a terminal in the directory you want to monitor for renaming. Then run the command:
+Open a terminal. Then run the command:
 ```
 renamer
 ```
