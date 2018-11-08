@@ -168,7 +168,7 @@ public class FileRename
         {
             return;
         }
-        if(files.length!=initialCount)
+        if(files.length>initialCount)
         {
             filesChanged = true;
         }
