@@ -134,7 +134,6 @@ public class FileRename
                 path = path.substring(1);
                 path = user+path;
             }
-            }
             scan = new Scanner(System.in);
             System.out.println("Enter the prefix to be used:");
             String pattern = scan.nextLine();
