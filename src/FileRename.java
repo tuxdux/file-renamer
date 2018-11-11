@@ -129,7 +129,11 @@ public class FileRename
             else if(path.charAt(0)=='.')
             {
                 //Get the directory from which this instance was launched
-                path = System.getProperty("user.dir");
+                String user = System.getProperty("user.dir");
+                //and replace '~' with the path to home directory
+                path = path.substring(1);
+                path = user+path;
+            }
             }
             scan = new Scanner(System.in);
             System.out.println("Enter the prefix to be used:");
