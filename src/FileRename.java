@@ -44,6 +44,7 @@ public class FileRename
     private boolean filesChanged;
     private int initialCount;
     private int nameNumber;
+    private String lastName;
     //-----------------These are all the special extensions-----------------
     //The extensions which have actually two extensions. You can add more.
     private String[] specialExtensions = {".tar.gz",".tar.xz",".tar.bz2",".tar.bz"};
@@ -54,6 +55,7 @@ public class FileRename
         this.initialCount = initialCount;
         this.nameNumber = nameNumber;
         this.toContinue = toContinue;
+        this.lastName = "";
     }
     private static void printUsage()
     {
@@ -129,10 +131,7 @@ public class FileRename
             else if(path.charAt(0)=='.')
             {
                 //Get the directory from which this instance was launched
-                String user = System.getProperty("user.dir");
-                //and replace '~' with the path to home directory
-                path = path.substring(1);
-                path = user+path;
+                path = System.getProperty("user.dir");
             }
             scan = new Scanner(System.in);
             System.out.println("Enter the prefix to be used:");
@@ -218,7 +217,7 @@ public class FileRename
         //If the file is not a directory and is not a hidden file,
         //we rename it according to the provided pattern.
         if(!latestFile.isDirectory() && !latestFile.isHidden() &&
-                !latestFile.getName().contains(pattern+" ") && latestFile.exists()
+                !latestFile.getName().equals(lastName) && latestFile.exists()
                 && getSize(latestFile)!=0)
         {
             //Get the initial size of the file
@@ -290,6 +289,7 @@ public class FileRename
                 //Increment the number in the name by one
                 if(renamed)
                 {
+                	lastName = newFile.getName();
                     nameNumber++;
                 }
             }
